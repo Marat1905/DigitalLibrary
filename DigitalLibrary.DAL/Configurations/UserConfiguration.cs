@@ -1,0 +1,17 @@
+﻿using DigitalLibrary.DAL.Entityes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DigitalLibrary.DAL.Configurations
+{
+    internal class UserConfiguration : IEntityTypeConfiguration<User>
+    {
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.ToTable("Users");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Name).HasMaxLength(255).IsRequired();
+            builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
+        }
+    }
+}
