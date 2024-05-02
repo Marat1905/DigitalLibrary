@@ -6,10 +6,10 @@ namespace DigitalLibrary.DAL.Entityes
     public  class User:Entity
     {
         /// <summary>Имя пользователя</summary>
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>Электронный адрес</summary>
-        public required string Email { get; set; }
+        public  string Email { get; set; }
 
     }
 }

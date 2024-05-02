@@ -9,9 +9,9 @@ namespace DigitalLibrary.DAL.Configurations
         public void Configure(EntityTypeBuilder<Book> builder)
         {
             builder.ToTable("Books");
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();
-            builder.Property(x => x.Title).HasMaxLength(255).IsRequired();
-            builder.Property(x => x.YearRelease).HasField("Year_Release").IsRequired();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd().HasColumnName(nameof(Book.Id).ToLower());
+            builder.Property(x => x.Title).HasMaxLength(255).HasColumnName(nameof(Book.Title).ToLower()).IsRequired();
+            builder.Property(x => x.YearRelease).HasColumnName("year_release").IsRequired();
         }
     }
 }

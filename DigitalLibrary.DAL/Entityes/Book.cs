@@ -6,7 +6,7 @@ namespace DigitalLibrary.DAL.Entityes
     public class Book : Entity
     {
         /// <summary>Название книги</summary>
-        public required string Title { get; set; }
+        public string Title { get; set; }
 
         /// <summary> Год выпуска книги</summary>
         public int YearRelease { get; set; }

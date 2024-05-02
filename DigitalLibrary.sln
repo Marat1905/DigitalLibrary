@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLibrary.DAL", "Digit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLibrary.BLL", "DigitalLibrary.BLL\DigitalLibrary.BLL.csproj", "{CD9EA1F9-F2F5-4B7D-BB04-C249F510478F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLibrary.TestConsole", "DigitalLibrary.TestConsole\DigitalLibrary.TestConsole.csproj", "{3F7EBD51-9FE9-4F98-96D0-3B4D04814C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CD9EA1F9-F2F5-4B7D-BB04-C249F510478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD9EA1F9-F2F5-4B7D-BB04-C249F510478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD9EA1F9-F2F5-4B7D-BB04-C249F510478F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F7EBD51-9FE9-4F98-96D0-3B4D04814C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F7EBD51-9FE9-4F98-96D0-3B4D04814C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F7EBD51-9FE9-4F98-96D0-3B4D04814C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F7EBD51-9FE9-4F98-96D0-3B4D04814C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
