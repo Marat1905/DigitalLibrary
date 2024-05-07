@@ -1,47 +1,49 @@
 ﻿using DigitalLibrary.DAL.Context;
 using DigitalLibrary.DAL.Entityes;
 using DigitalLibrary.DAL.Repositories;
+using DigitalLibrary.TestConsole.Data;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace DigitalLibrary.TestConsole
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
+        private static IHost __Host;
+        static async Task Main(string[] args)
+        {;
 
-            IConfiguration config = builder.Build();
+            IHost Host = __Host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
 
-            var db = new ApplicationContext(GetConnectionString(config.GetSection("Database")))
+            IServiceProvider Services = Host.Services;
 
-            BookRepository bookRepository = new BookRepository(db);
-
-            Book book1= new Book { Title="Война и Мир", YearRelease=1900 };
-            bookRepository.Add(book1);
-           var t= bookRepository.Items.ToList();
-
-        }
-
-       private  static string GetConnectionString(IConfiguration Configuration)
-        {
-            var type = Configuration["Type"];
-            switch (type)
+            using (var scope = Services.CreateScope())
             {
-                case null: throw new InvalidOperationException("Не определён тип БД");
+                await scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync();
+            }
 
-                default: throw new InvalidOperationException($"Тип подключения {type} не поддерживается");
-                case "MSSQL":
-                    return Configuration.GetConnectionString(type);
 
-                case "SQLite":
-                    return Configuration.GetConnectionString(type);
 
-            };
         }
+
+
+
+        static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+               .AddDatabase(host.Configuration.GetSection("Database"))        
+      ;
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+          Host.CreateDefaultBuilder(args)
+              .ConfigureServices(ConfigureServices)
+               .ConfigureLogging(builder =>
+               {
+                   builder.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.None);
+               })
+            ;
+
 
     }
 }

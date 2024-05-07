@@ -11,5 +11,8 @@ namespace DigitalLibrary.DAL.Entityes
         /// <summary>Электронный адрес</summary>
         public  string Email { get; set; }
 
+        /// <summary>Книги на руках</summary>
+        public virtual IEnumerable<Book> Books { get; set; }
+
     }
 }
