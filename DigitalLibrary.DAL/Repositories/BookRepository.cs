@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DigitalLibrary.DAL.Repositories
 {
-    public class BookRepository : BaseRepository<Book>
+    public class BookRepository : BaseRepository<BookEntity>
     {
-        public override IQueryable<Book> Items => base.Items.Include(item => item.Users);
+        public override IQueryable<BookEntity> Items => base.Items.Include(item => item.Users);
 
 
         public BookRepository(ApplicationContext db) : base(db) { }
@@ -17,7 +17,7 @@ namespace DigitalLibrary.DAL.Repositories
         /// <param name="endDate"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IEnumerable<Book> GetGenreBetweenDates(DateTime startDate, DateTime endDate)
+        public IEnumerable<BookEntity> GetGenreBetweenDates(DateTime startDate, DateTime endDate)
         {
             throw new NotImplementedException();
         }
@@ -41,17 +41,17 @@ namespace DigitalLibrary.DAL.Repositories
         /// <summary>Получение последней вышедшей книги.</summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Book LastBookPublished()
+        public BookEntity LastBookPublished()
         {
             throw new NotImplementedException();
         }
 
         /// <summary>Получение списка всех книг, отсортированного в алфавитном порядке по названию.</summary>
         /// <returns></returns>
-        public IEnumerable<Book> AllBooksTitleAsc() => Items.OrderBy(item => item.Title);
+        public IEnumerable<BookEntity> AllBooksTitleAsc() => Items.OrderBy(item => item.Title);
 
         /// <summary>Получение списка всех книг, отсортированного в порядке убывания года их выхода</summary>
         /// <returns></returns>
-        public IEnumerable<Book> AllBooksYearReleaseDesc() => Items.OrderByDescending(item => item.YearRelease);
+        public IEnumerable<BookEntity> AllBooksYearReleaseDesc() => Items.OrderByDescending(item => item.YearRelease);
     }
 }

@@ -4,7 +4,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 namespace DigitalLibrary.DAL.Entityes
 {
     /// <summary>Сущность книги</summary>
-    public class Book : Entity
+    public class BookEntity : Entity
     {
         /// <summary>Название книги</summary>
         public string Title { get; set; }
@@ -19,6 +19,6 @@ namespace DigitalLibrary.DAL.Entityes
         public string? Genre { get; set; }
 
         /// <summary>Список у кого книги</summary>
-        public virtual IEnumerable<User> Users { get; set; }
+        public virtual IEnumerable<UserEntity> Users { get; set; }
     }
 }

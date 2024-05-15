@@ -3,7 +3,7 @@
 namespace DigitalLibrary.DAL.Entityes
 {
     /// <summary>Сущность пользователя</summary>
-    public  class User:Entity
+    public  class UserEntity:Entity
     {
         /// <summary>Имя пользователя</summary>
         public string Name { get; set; }
@@ -12,7 +12,7 @@ namespace DigitalLibrary.DAL.Entityes
         public  string Email { get; set; }
 
         /// <summary>Книги на руках</summary>
-        public virtual IEnumerable<Book> Books { get; set; }
+        public virtual IEnumerable<BookEntity> Books { get; set; }
 
     }
 }

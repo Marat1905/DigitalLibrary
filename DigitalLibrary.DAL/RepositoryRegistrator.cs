@@ -8,8 +8,8 @@ namespace DigitalLibrary.DAL
     public static class RepositoryRegistrator
     {
         public static IServiceCollection AddRepositoriesInDB(this IServiceCollection services) => services
-             .AddTransient<IRepository<Book>, BookRepository>()
-             .AddTransient<IRepository<User>, UserRepository>()
+             .AddTransient<IRepository<BookEntity>, BookRepository>()
+             .AddTransient<IRepository<UserEntity>, UserRepository>()
             ;
 
     }

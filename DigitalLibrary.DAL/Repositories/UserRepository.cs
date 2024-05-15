@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DigitalLibrary.DAL.Repositories
 {
-    public class UserRepository : BaseRepository<User>
+    public class UserRepository : BaseRepository<UserEntity>
     {
-        public override IQueryable<User> Items => base.Items.Include(item => item.Books);
+        public override IQueryable<UserEntity> Items => base.Items.Include(item => item.Books);
 
         public UserRepository(ApplicationContext db) : base(db) { }
     }
