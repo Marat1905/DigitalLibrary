@@ -23,5 +23,65 @@ namespace DigitalLibrary.BLL.Services
             _bookRepository.Add(book.ToBookEntity());
             return book;
         }
+
+        public UserModel AddUser(UserModel user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BookModel> GetAllBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public BookModel GetBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<BookEntity> GetGenreBetweenDates(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserModel GetUser(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BookModel RemoveBook(BookModel book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserModel RemoveBook(UserModel user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BookModel UpdateBook(int id, int yearRelease)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BookModel UpdateBook(BookModel book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserModel UpdateUser(int id, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserModel UpdateUser(UserModel user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
