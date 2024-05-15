@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DigitalLibrary.BLL\DigitalLibrary.BLL.csproj" />
     <ProjectReference Include="..\DigitalLibrary.DAL\DigitalLibrary.DAL.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿namespace DigitalLibrary.BLL.Models
 {
-    internal class BookModel
+    public class BookModel
     {
         /// <summary>Идентификатор</summary>
         public int Id { get; set; }
@@ -18,6 +18,15 @@
         public string? Genre { get; set; }
 
         /// <summary>Список у кого книги</summary>
-        public virtual IEnumerable<UserModel> Users { get; set; }
+        public virtual IEnumerable<UserModel>? Users { get; set; }
+
+        public BookModel(int id,string title,int yearRelease,string? author, string? genre)
+        {
+            Id = id;
+            Title = title;
+            YearRelease = yearRelease;
+            Author = author;
+            Genre = genre;
+        }
     }
 }

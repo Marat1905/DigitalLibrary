@@ -1,11 +1,11 @@
-﻿using DigitalLibrary.DAL.Context;
-using DigitalLibrary.DAL.Entityes;
-using DigitalLibrary.DAL.Repositories;
-using DigitalLibrary.TestConsole.Data;
-using Microsoft.Extensions.Configuration;
+﻿using DigitalLibrary.TestConsole.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using DigitalLibrary.BLL.Services;
+using DigitalLibrary.DAL.Interfaces;
+using DigitalLibrary.BLL.Interfaces;
+using DigitalLibrary.BLL.Models;
 
 namespace DigitalLibrary.TestConsole
 {
@@ -25,14 +25,21 @@ namespace DigitalLibrary.TestConsole
                 await scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync();
             }
 
+          
 
+            IDigitalLibraryService digitalLibrary =Services.CreateScope().ServiceProvider.GetService<IDigitalLibraryService>();
+
+            BookModel book1 = new BookModel(1, "Книга 1", 2004, "Иванов И.И.", "Драма");
+
+            digitalLibrary.AddBook(book1);
 
         }
 
 
 
         static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
-               .AddDatabase(host.Configuration.GetSection("Database"))        
+            .AddDatabase(host.Configuration.GetSection("Database"))
+            .AddCarDriverService()
       ;
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

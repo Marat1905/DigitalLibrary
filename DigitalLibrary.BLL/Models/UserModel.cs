@@ -1,6 +1,6 @@
 ﻿namespace DigitalLibrary.BLL.Models
 {
-    internal class UserModel
+    public class UserModel
     {
         /// <summary>Идентификатор</summary>
         public int Id { get; set; }

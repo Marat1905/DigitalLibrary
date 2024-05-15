@@ -30,6 +30,7 @@ namespace DigitalLibrary.DAL.Repositories.Base
         {
             if (item is null) throw new ArgumentNullException(nameof(item));
             //_db.Add(item);
+            item.Id = 0;
             _db.Entry(item).State = EntityState.Added;
             if (AutoSaveChanges)
                 _db.SaveChanges();
