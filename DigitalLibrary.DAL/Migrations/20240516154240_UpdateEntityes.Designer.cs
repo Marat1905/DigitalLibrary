@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalLibrary.DAL.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240507160631_UpdateEntityes")]
+    [Migration("20240516154240_UpdateEntityes")]
     partial class UpdateEntityes
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace DigitalLibrary.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BookUser", b =>
+            modelBuilder.Entity("BookEntityUserEntity", b =>
                 {
                     b.Property<int>("BooksId")
                         .HasColumnType("int");
@@ -36,10 +36,10 @@ namespace DigitalLibrary.DAL.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("BookUser");
+                    b.ToTable("BookEntityUserEntity");
                 });
 
-            modelBuilder.Entity("DigitalLibrary.DAL.Entityes.Book", b =>
+            modelBuilder.Entity("DigitalLibrary.DAL.Entityes.BookEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace DigitalLibrary.DAL.Migrations
                     b.ToTable("Books", (string)null);
                 });
 
-            modelBuilder.Entity("DigitalLibrary.DAL.Entityes.User", b =>
+            modelBuilder.Entity("DigitalLibrary.DAL.Entityes.UserEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -92,15 +92,15 @@ namespace DigitalLibrary.DAL.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("BookUser", b =>
+            modelBuilder.Entity("BookEntityUserEntity", b =>
                 {
-                    b.HasOne("DigitalLibrary.DAL.Entityes.Book", null)
+                    b.HasOne("DigitalLibrary.DAL.Entityes.BookEntity", null)
                         .WithMany()
                         .HasForeignKey("BooksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DigitalLibrary.DAL.Entityes.User", null)
+                    b.HasOne("DigitalLibrary.DAL.Entityes.UserEntity", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)

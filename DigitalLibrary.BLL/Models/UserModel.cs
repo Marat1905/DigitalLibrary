@@ -13,5 +13,12 @@
 
         /// <summary>Книги на руках</summary>
         public virtual IEnumerable<BookModel> Books { get; set; }
+
+        public UserModel(int id , string name , string email)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+        }
     }
 }

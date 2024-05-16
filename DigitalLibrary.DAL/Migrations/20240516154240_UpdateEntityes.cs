@@ -23,7 +23,7 @@ namespace DigitalLibrary.DAL.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "BookUser",
+                name: "BookEntityUserEntity",
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "int", nullable: false),
@@ -31,15 +31,15 @@ namespace DigitalLibrary.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookUser", x => new { x.BooksId, x.UsersId });
+                    table.PrimaryKey("PK_BookEntityUserEntity", x => new { x.BooksId, x.UsersId });
                     table.ForeignKey(
-                        name: "FK_BookUser_Books_BooksId",
+                        name: "FK_BookEntityUserEntity_Books_BooksId",
                         column: x => x.BooksId,
                         principalTable: "Books",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookUser_Users_UsersId",
+                        name: "FK_BookEntityUserEntity_Users_UsersId",
                         column: x => x.UsersId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -47,8 +47,8 @@ namespace DigitalLibrary.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookUser_UsersId",
-                table: "BookUser",
+                name: "IX_BookEntityUserEntity_UsersId",
+                table: "BookEntityUserEntity",
                 column: "UsersId");
         }
 
@@ -56,7 +56,7 @@ namespace DigitalLibrary.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookUser");
+                name: "BookEntityUserEntity");
 
             migrationBuilder.DropColumn(
                 name: "Author",

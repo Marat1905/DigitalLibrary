@@ -12,6 +12,8 @@ namespace DigitalLibrary.DAL.Configurations
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Name).HasMaxLength(255).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
+            builder.HasMany(t => t.Books).WithMany(b=>b.Users);
+
         }
     }
 }

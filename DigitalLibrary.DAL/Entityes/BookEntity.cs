@@ -1,5 +1,4 @@
 ﻿using DigitalLibrary.DAL.Entityes.Base;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DigitalLibrary.DAL.Entityes
 {

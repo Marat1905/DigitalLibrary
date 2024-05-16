@@ -1,11 +1,5 @@
 ﻿using DigitalLibrary.BLL.Models;
 using DigitalLibrary.DAL.Entityes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DigitalLibrary.BLL.Extensions
 {
@@ -31,6 +25,16 @@ namespace DigitalLibrary.BLL.Extensions
             bookEntity.Genre = model.Genre;
 
             return bookEntity;
+        }
+
+        public static UserModel ToUserModel (this UserModel model)
+        {
+            return new UserModel (model.Id,model.Name,model.Email);
+        }
+
+        public static BookModel ToBookModel (this BookEntity model)
+        {
+            return new BookModel(model.Id,model.Title,model.YearRelease,model.Author,model.Genre);
         }
     }
 }

@@ -26,12 +26,14 @@ namespace DigitalLibrary.BLL.Services
 
         public UserModel AddUser(UserModel user)
         {
-            throw new NotImplementedException();
+            _userRepository.Add(user.ToUserEntity());
+            return user;
         }
 
         public IEnumerable<BookModel> GetAllBooks()
         {
-            throw new NotImplementedException();
+            foreach (var item in _bookRepository.Items)
+                yield return item.ToBookModel();
         }
 
         public IEnumerable<UserModel> GetAllUsers()
