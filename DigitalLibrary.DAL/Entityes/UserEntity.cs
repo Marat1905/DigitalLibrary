@@ -12,7 +12,7 @@ namespace DigitalLibrary.DAL.Entityes
         public  string Email { get; set; }
 
         /// <summary>Книги на руках</summary>
-        public virtual IEnumerable<BookEntity> Books { get; set; }
+        public  List<BookEntity> Books { get; set; }
 
     }
 }

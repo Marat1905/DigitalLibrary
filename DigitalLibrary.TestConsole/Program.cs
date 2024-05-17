@@ -70,9 +70,32 @@ namespace DigitalLibrary.TestConsole
 
             //GetUser3.Email = "googler@gmail.com";
             //digitalLibrary.UpdateUser(GetUser3);
-            digitalLibrary.UpdateBook(GetBook2.Id, 1990);
-            digitalLibrary.UpdateUser(GetUser3.Id, "Петров");
+            //digitalLibrary.UpdateBook(GetBook2.Id, 1990);
+            //digitalLibrary.UpdateUser(GetUser3.Id, "Петров");
 
+            var list=digitalLibrary.GetGenreBooksBetweenDates(2005, 2007, "Художественное").ToList();
+
+            var countAutor = digitalLibrary.GetCountBookCertainAuthor("Иванов И.И.");
+
+            var countGenre = digitalLibrary.GetCountBookGenre("Научное");
+
+            var isBook = digitalLibrary.IsBookCertainAuthor("Иванов И.И.", "Книга 3");
+
+            var last = digitalLibrary.LastBookPublished();
+
+            var booksAsc= digitalLibrary.AllBooksTitleAsc().ToList();
+
+            var booksDesc= digitalLibrary.AllBooksYearReleaseDesc().ToList();
+
+            digitalLibrary.AddUserBook(GetUser3, GetBook2);
+
+            var isbookUser = digitalLibrary.IsBookUserInHand(GetUser3.Id, "Книга 2");
+
+            var isbookUser1= digitalLibrary.IsBookUserInHand(10, "Книга 2");
+
+            var countBooksUser = digitalLibrary.GetCountUserBooks(GetUser3.Id);
+
+            var countBooksUser1 = digitalLibrary.GetCountUserBooks(10);
         }
 
 

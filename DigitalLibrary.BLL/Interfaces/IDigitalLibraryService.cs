@@ -67,12 +67,55 @@ namespace DigitalLibrary.BLL.Interfaces
         public UserModel UpdateUser(UserModel user);
 
         /// <summary>Получать список книг определенного жанра и вышедших между определенными годами.</summary>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
+        /// <param name="startDate">Начальная дата поиска</param>
+        /// <param name="endDate">Конечная дата поиска</param>
+        /// <param name="genre">Жанр</param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IEnumerable<BookEntity> GetGenreBetweenDates(DateTime startDate, DateTime endDate);
+        public IEnumerable<BookModel> GetGenreBooksBetweenDates(int startDate, int endDate, string genre);
 
+        /// <summary>Метод получения количество книг определенного автора </summary>
+        /// <param name="autor">Автор</param>
+        /// <returns></returns>
+        public int GetCountBookCertainAuthor(string autor);
 
+        /// <summary>Метод получения количество книг определенного жанра</summary>
+        /// <param name="genre">Жанр</param>
+        /// <returns></returns>
+        public int GetCountBookGenre(string genre);
+
+        /// <summary>Есть ли книга определенного автора и с определенным названием в библиотеке.</summary>
+        /// <param name="autor">Автор книги</param>
+        /// <param name="title">Название книги</param>
+        /// <returns></returns>
+        public bool IsBookCertainAuthor(string autor, string title);
+
+        /// <summary>Получение последней вышедшей книги.</summary>
+        /// <returns></returns>
+        public BookModel LastBookPublished();
+
+        /// <summary>Получение списка всех книг, отсортированного в алфавитном порядке по названию.</summary>
+        /// <returns></returns>
+        public IEnumerable<BookModel> AllBooksTitleAsc();
+
+        /// <summary>Получение списка всех книг, отсортированного в порядке убывания года их выхода</summary>
+        /// <returns></returns>
+        public IEnumerable<BookModel> AllBooksYearReleaseDesc();
+
+        /// <summary>Есть ли книга на руках у пользователя</summary>
+        /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="bookName">Имя книги</param>
+        /// <returns></returns>
+        public bool IsBookUserInHand(int id,string bookName);
+
+        /// <summary>Получение количества книг на руках у порльзователя</summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int GetCountUserBooks(int id);
+
+        /// <summary>Добавить читателю книгу</summary>
+        /// <param name="user"></param>
+        /// <param name="book"></param>
+        public void AddUserBook(UserModel user, BookModel book);
     }
 }

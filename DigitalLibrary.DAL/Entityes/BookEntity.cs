@@ -18,6 +18,6 @@ namespace DigitalLibrary.DAL.Entityes
         public string? Genre { get; set; }
 
         /// <summary>Список у кого книги</summary>
-        public virtual IEnumerable<UserEntity> Users { get; set; }
+        public  List<UserEntity> Users { get; set; }
     }
 }

@@ -47,11 +47,6 @@ namespace DigitalLibrary.BLL.Services
            return _bookRepository.Get(id).ToBookModel();
         }
 
-        public IEnumerable<BookEntity> GetGenreBetweenDates(DateTime startDate, DateTime endDate)
-        {
-            throw new NotImplementedException();
-        }
-
         public UserModel GetUser(int id)
         {
             return _userRepository.Get(id).ToUserModel();
@@ -116,6 +111,71 @@ namespace DigitalLibrary.BLL.Services
                 _userRepository.Update(userEntity);
             }
             return user;
+        }
+
+        public IEnumerable<BookModel> GetGenreBooksBetweenDates(int startDate, int endDate, string genre)
+        {
+            foreach (var item in _bookRepository.Items.Where(item => item.Genre == genre)
+                                                     .Where(item => item.YearRelease >= startDate)
+                                                     .Where(item => item.YearRelease <= endDate))
+            {
+                yield return item.ToBookModel();
+            }
+        }
+
+        public int GetCountBookCertainAuthor(string autor)
+        {
+           return _bookRepository.Items.Count(item => item.Author == autor);
+        }
+
+        public int GetCountBookGenre(string genre)
+        {
+           return _bookRepository.Items.Count(item=>item.Genre.Contains(genre));
+        }
+
+        public bool IsBookCertainAuthor(string autor, string title)
+        {
+          return _bookRepository.Items.Any(item=>item.Author== autor && item.Title == title);
+        }
+
+        public BookModel LastBookPublished()
+        {
+            return AllBooksYearReleaseDesc().FirstOrDefault();
+        }
+
+        public IEnumerable<BookModel> AllBooksTitleAsc()
+        {
+            foreach (var item in _bookRepository.Items.OrderBy(item => item.Title))
+            {
+                yield return item.ToBookModel();
+            }
+        }
+
+        public IEnumerable<BookModel> AllBooksYearReleaseDesc()
+        {
+            foreach (var item in _bookRepository.Items.OrderByDescending(item => item.YearRelease))
+            {
+                yield return item.ToBookModel();
+            }
+        }
+
+        public bool IsBookUserInHand(int id, string bookName)
+        {
+            return _userRepository.Items.Where(item=>item.Id==id).Any(b=>b.Books.Any(p=>p.Title==bookName));
+        }
+
+        public int GetCountUserBooks(int id)
+        {
+            return _userRepository.Items.FirstOrDefault(p=>p.Id==id)?.Books?.Count ?? 0;
+        }
+
+        public void AddUserBook(UserModel user, BookModel book)
+        {
+           var bookEntity= _bookRepository.Get(book.Id);
+           var userEntity= _userRepository.Get(user.Id);
+            userEntity.Books.Add(bookEntity);
+            _userRepository.Update(userEntity);
+
         }
     }
 }
