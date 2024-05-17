@@ -38,12 +38,13 @@ namespace DigitalLibrary.BLL.Services
 
         public IEnumerable<UserModel> GetAllUsers()
         {
-            throw new NotImplementedException();
+            foreach (var item in _userRepository.Items)
+                yield return item.ToUserModel();
         }
 
         public BookModel GetBook(int id)
         {
-            throw new NotImplementedException();
+           return _bookRepository.Get(id).ToBookModel();
         }
 
         public IEnumerable<BookEntity> GetGenreBetweenDates(DateTime startDate, DateTime endDate)
@@ -53,37 +54,68 @@ namespace DigitalLibrary.BLL.Services
 
         public UserModel GetUser(int id)
         {
-            throw new NotImplementedException();
+            return _userRepository.Get(id).ToUserModel();
         }
 
-        public BookModel RemoveBook(BookModel book)
+        public void RemoveBook(BookModel book)
         {
-            throw new NotImplementedException();
+            _bookRepository.Remove(book.Id);
         }
 
-        public UserModel RemoveBook(UserModel user)
+        public void RemoveUser(UserModel user)
         {
-            throw new NotImplementedException();
+           _userRepository.Remove(user.Id);
         }
 
         public BookModel UpdateBook(int id, int yearRelease)
         {
-            throw new NotImplementedException();
+            var book = _bookRepository.Get(id);
+            if (book != null)
+            {
+                book.YearRelease = yearRelease;
+                _bookRepository.Update(book);
+                return book.ToBookModel();
+            }
+            else
+                return null;
         }
 
         public BookModel UpdateBook(BookModel book)
         {
-            throw new NotImplementedException();
+            var bookEntity = _bookRepository.Get(book.Id);
+            if (bookEntity != null)
+            {
+                bookEntity.Author = book.Author;
+                bookEntity.Title = book.Title;
+                bookEntity.YearRelease = book.YearRelease;
+                _bookRepository.Update(bookEntity);
+            }
+            return book;
         }
 
         public UserModel UpdateUser(int id, string name)
         {
-            throw new NotImplementedException();
+           var user= _userRepository.Get(id);
+            if (user != null)
+            {
+                user.Name = name;
+                _userRepository.Update(user);
+                return user.ToUserModel();
+            }
+            else
+                return null;
         }
 
         public UserModel UpdateUser(UserModel user)
         {
-            throw new NotImplementedException();
+           var userEntity=_userRepository.Get(user.Id);
+            if(userEntity != null)
+            {
+                userEntity.Name = user.Name;
+                userEntity.Email = user.Email;
+                _userRepository.Update(userEntity);
+            }
+            return user;
         }
     }
 }

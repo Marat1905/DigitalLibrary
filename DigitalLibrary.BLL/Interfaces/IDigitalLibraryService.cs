@@ -23,7 +23,7 @@ namespace DigitalLibrary.BLL.Interfaces
         /// <summary>Удалить книгу</summary>
         /// <param name="book">Модель книги</param>
         /// <returns></returns>
-        public BookModel RemoveBook(BookModel book);
+        public void RemoveBook(BookModel book);
 
         /// <summary>Обновление года выпуска у книги</summary>
         /// <param name="id">Идентификатор книги</param>
@@ -53,7 +53,7 @@ namespace DigitalLibrary.BLL.Interfaces
         /// <summary>Удалить читателя</summary>
         /// <param name="user">модель пользователя</param>
         /// <returns></returns>
-        public UserModel RemoveBook(UserModel user);
+        public void RemoveUser(UserModel user);
 
         /// <summary>Обновить имя читателя</summary>
         /// <param name="id">идентификатор читателя</param>

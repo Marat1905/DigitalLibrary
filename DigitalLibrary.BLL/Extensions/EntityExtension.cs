@@ -27,7 +27,7 @@ namespace DigitalLibrary.BLL.Extensions
             return bookEntity;
         }
 
-        public static UserModel ToUserModel (this UserModel model)
+        public static UserModel ToUserModel (this UserEntity model)
         {
             return new UserModel (model.Id,model.Name,model.Email);
         }

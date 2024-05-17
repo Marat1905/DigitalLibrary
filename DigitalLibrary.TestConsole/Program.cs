@@ -56,6 +56,23 @@ namespace DigitalLibrary.TestConsole
 
             var Books = digitalLibrary.GetAllBooks().ToList();
 
+            var Users=digitalLibrary.GetAllUsers().ToList();
+
+            var GetBook2 = digitalLibrary.GetBook(2);
+
+            var GetUser3=digitalLibrary.GetUser(3);
+
+            //digitalLibrary.RemoveUser(GetUser3);
+
+            //digitalLibrary.RemoveBook(GetBook2);
+            //GetBook2.Title = "Супер Книга";
+            //digitalLibrary.UpdateBook(GetBook2);
+
+            //GetUser3.Email = "googler@gmail.com";
+            //digitalLibrary.UpdateUser(GetUser3);
+            digitalLibrary.UpdateBook(GetBook2.Id, 1990);
+            digitalLibrary.UpdateUser(GetUser3.Id, "Петров");
+
         }
 
 
